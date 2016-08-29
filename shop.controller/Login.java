@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import shop.bo.UserBoImplementacija;
 import shop.bo.ValidateException;
 import shop.dto.Cart;
-
+import shop.dto.Product;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -23,14 +23,13 @@ public class Login extends HttpServlet {
 
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		shop.dto.User user = null;
-		
+		List<Product> products = new ArrayList<>();
 
 		UserBoImplementacija userBo = new UserBoImplementacija();
 
@@ -38,15 +37,15 @@ public class Login extends HttpServlet {
 			user = userBo.readUser(username, password);
 			HttpSession sesion = request.getSession();
 			sesion.setAttribute("user", user);
-			
 
+			HttpSession session2 = request.getSession();
+			session2.setAttribute("products", products);
 
 			response.sendRedirect("Succes.jsp");
 		} catch (ValidateException x) {
 			request.setAttribute("message", x.getMessage());
 			request.getRequestDispatcher("Login.jsp").forward(request, response);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			response.sendRedirect("Login.jsp");
 
 		}

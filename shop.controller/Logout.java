@@ -1,5 +1,4 @@
 
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,26 +9,19 @@ import javax.servlet.http.HttpSession;
 
 import shop.dto.User;
 
-
 @WebServlet("/Logout")
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Logout() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		HttpSession session = request.getSession(false);
-		if(session!=null)
-			session.invalidate();
-		request.getRequestDispatcher("Home.jsp");
+	public Logout() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getSession().invalidate();
+		response.sendRedirect("Home.jsp");
 	}
 
 }

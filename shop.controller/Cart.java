@@ -1,7 +1,7 @@
 
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,19 +26,14 @@ public class Cart extends HttpServlet {
 			throws ServletException, IOException {
         
 		User user = (User) request.getSession().getAttribute("user");
-		shop.dto.Cart cart =  (shop.dto.Cart)request.getAttribute("cart");
-		ArrayList<shop.dto.Cart> cartItems = new ArrayList<>();
-		cartItems.add(cart);
+		List<Product>products=(List<Product>) request.getSession().getAttribute("products");
+		Product product =(Product) request.getAttribute("product");
+		products.add(product);
 		
-		ArrayList<Product> products = new ArrayList<>();
-		for(shop.dto.Cart  id : cartItems){
-			Product product =new Product();
-			product.setId(id.getProductid());
-			products.add(product);
-			
-		}
+	
+
 		
-		request.setAttribute("products", products);
+		request.getSession().setAttribute("products", products);
 		request.getSession().setAttribute("user", user);
 		request.getRequestDispatcher("Cart.jsp").forward(request, response);
 	

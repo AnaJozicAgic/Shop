@@ -16,5 +16,7 @@
 
 <jsp:include page="UserHeader.jsp"></jsp:include>
 
+<h2>Welcome, have pleasant shopping</h2>
+
 </body>
 </html>
