@@ -25,9 +25,11 @@ public class ListProduct extends HttpServlet {
 
 		User user = (User) request.getSession().getAttribute("user");
 		ProductBoImplementacija productBo = new ProductBoImplementacija();
+		
 		List<Product> products = productBo.listPrducts();
 
 		request.setAttribute("products", products);
+		request.getSession().setAttribute("products", products);
 		request.getSession().setAttribute("user", user);
 		request.getRequestDispatcher("ListProdust.jsp").forward(request, response);
 

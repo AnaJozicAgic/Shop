@@ -18,10 +18,10 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="Succes.jsp">Home</a></li>
+				<li><a href="Admin.jsp">Home</a></li>
 				<li><a href="Logout">Log out</a></li>
-				<li><a href="ListProduct">List product</a></li>
-				<li><a href="Cart.jsp">Cart</a></li>
+				<li><a href="AddProduct.jsp">Add product</a></li>
+				<li><a href="listProducts">Edit Product</a></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search" action="search" method="get">
 				<div class="form-group">

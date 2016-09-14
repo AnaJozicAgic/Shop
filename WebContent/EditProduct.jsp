@@ -14,9 +14,9 @@
 </head>
 <body>
 
-<jsp:include page="UserHeader.jsp"></jsp:include>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
 
-<h3>To view selected items click cart button in navigation.</h4>
+
 		<table class="table table-hover">
 	
 			<thead>
@@ -26,7 +26,8 @@
 					<th>Name</th>
 					<th>Description</th>
 					<th>Price</th>
-					<th>Purchase</th>
+					<th>Edit</th>
+					<th>Delete</th>
 
 				</tr>
 			</thead>
@@ -40,7 +41,8 @@
 						<td>${product.name}</td>
 						<td>${product.description}</td>
 						<td>${product.price}</td>
-						<td><a style="color:black;"  href="purchase?id=${product.id}">purchase</a></td>
+						<td><a style="color:black;"  href="editProduct?id=${product.id}">edit</a></td>
+						<td><a style="color:black;"  href="deleteProduct?id=${product.id}">delete</a></td>
 						<td></td>
 
 					</tr>

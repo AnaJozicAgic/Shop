@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import shop.bo.UserBoImplementacija;
 import shop.bo.ValidateException;
-import shop.dto.Cart;
+
 import shop.dto.Product;
 
 @WebServlet("/login")
@@ -29,7 +29,7 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		shop.dto.User user = null;
-		List<Product> products = new ArrayList<>();
+		List<Product> cart = new ArrayList<>();
 
 		UserBoImplementacija userBo = new UserBoImplementacija();
 
@@ -39,9 +39,14 @@ public class Login extends HttpServlet {
 			sesion.setAttribute("user", user);
 
 			HttpSession session2 = request.getSession();
-			session2.setAttribute("products", products);
-
-			response.sendRedirect("Succes.jsp");
+			session2.setAttribute("cart", cart);
+			
+			if (user.getRolle().equals("administrator")) {
+				response.sendRedirect("Admin.jsp");
+			} else {
+				response.sendRedirect("Succes.jsp");
+			}
+			
 		} catch (ValidateException x) {
 			request.setAttribute("message", x.getMessage());
 			request.getRequestDispatcher("Login.jsp").forward(request, response);
