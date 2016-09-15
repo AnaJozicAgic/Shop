@@ -16,7 +16,6 @@
 
 <jsp:include page="AdminHeader.jsp"></jsp:include>
 
-
 		<table class="table table-hover">
 	
 			<thead>
@@ -50,9 +49,6 @@
 
 			</tbody>
 		</table>
-
-
-
 
 </body>
 </html>

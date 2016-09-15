@@ -24,16 +24,20 @@ public class Search extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
 		String search = request.getParameter("product");
 		User user = (User) request.getSession(false).getAttribute("user");
 		ProductBoImplementacija bo = new ProductBoImplementacija();
 
 		List<Product> products = bo.searchPrducts(search);
-
-		request.setAttribute("products", products);
-		request.getSession().setAttribute("user", user);
-		request.getRequestDispatcher("ListProdust.jsp").forward(request, response);
+		if (user.getRolle().equals("user")) {
+			request.setAttribute("products", products);
+			request.getSession().setAttribute("user", user);
+			request.getRequestDispatcher("ListProdust.jsp").forward(request, response);
+		} else {
+			request.setAttribute("products", products);
+			request.getSession().setAttribute("user", user);
+			request.getRequestDispatcher("EditProduct.jsp").forward(request, response);
+		}
 	}
 
 }

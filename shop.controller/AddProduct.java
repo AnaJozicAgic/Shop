@@ -39,7 +39,7 @@ public class AddProduct extends HttpServlet {
 			bo.addProduct(product);
 			
 			request.getSession().setAttribute("user", user);
-			request.getRequestDispatcher("EditProduct.jsp").forward(request, response);
+			response.sendRedirect("listProducts");
 			
 		} catch (ValidateException e) {
 			e.printStackTrace();

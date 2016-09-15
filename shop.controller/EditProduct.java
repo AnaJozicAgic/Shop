@@ -29,8 +29,8 @@ public class EditProduct extends HttpServlet {
 		Product product;
 		ProductBoImplementacija bo = new ProductBoImplementacija();
 		try {
-			product=bo.readProduct(productId);
-			
+			product = bo.readProduct(productId);
+
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("product", product);
 			request.getRequestDispatcher("EditForm.jsp").forward(request, response);
@@ -42,15 +42,42 @@ public class EditProduct extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		User user = (User) request.getSession().getAttribute("user");
 		Product product = (Product) request.getSession().getAttribute("product");
+		String name = request.getParameter("name");
+		double price = Double.parseDouble(request.getParameter("price"));
+		String description = request.getParameter("description");
+
 		ProductBoImplementacija bo = new ProductBoImplementacija();
-		Product t = bo.readProduct(product.getName());
+
+		Product t = new Product();
+		
+		t.setId(product.getId());
+		
+		if (name.equals("")) {
+			t.setName(product.getName());
+		} else {
+			t.setName(name);
+		}
+		
+		t.setPrice(price);
+		
+		if (description.equals("")) {
+			t.setDescription(product.getDescription());
+		} else {
+			t.setDescription(description);
+		}
+
+		System.out.println(t.toString());
+		// System.out.println(product.toString());
+
 		bo.updateProduct(t);
-		
+
 		request.getSession().setAttribute("user", user);
-		request.getRequestDispatcher("listProducts").forward(request, response);
-		
+		response.sendRedirect("listProducts");
+		// doGet(request, response);
+
 	}
 
 }

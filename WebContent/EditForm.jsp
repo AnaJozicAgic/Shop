@@ -18,15 +18,13 @@
 
 <div class="wrapper">
 		<form class="form-signin" action="editProduct" method="post" >
-
 			<h2 class="form-signin-heading">Edit Product </h2>
 			<input type="text" class="form-control" name="name"
 				placeholder="${product.name}" /> <input type="text"
-				class="form-control" name="price" placeholder="${product.price} " />
+				class="form-control" name="price" placeholder="${product.price} " required/>
 			<input type="text" class="form-control" name="description"
 				placeholder="${product.description}" />
 			<button class="btn btn-lg btn-default btn-block" type="submit">edit</button>
-
 		</form>
 	</div>
 </body>

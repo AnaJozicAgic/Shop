@@ -20,10 +20,10 @@
 		<form class="form-signin" action="addProduct" method="post">
 			<h2 class="form-signin-heading">Add Product </h2>
 			<input type="text" class="form-control" name="name"
-				placeholder="Enter product name:" /> <input type="text"
-				class="form-control" name="price" placeholder="Enter price: " />
+				placeholder="Enter product name:" required/> <input type="text"
+				class="form-control" name="price" placeholder="Enter price: " required/>
 			<input type="text" class="form-control" name="description"
-				placeholder="Enter description: " />
+				placeholder="Enter description: " required/>
 			<button class="btn btn-lg btn-default btn-block" type="submit">add</button>
 
 

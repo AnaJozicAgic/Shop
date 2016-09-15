@@ -37,5 +37,11 @@ public String getImg() {
 public void setImg(String img) {
 	this.img = img;
 }
+@Override
+public String toString() {
+	return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + ", img=" + img
+			+ "]";
+}
+
 
 }
